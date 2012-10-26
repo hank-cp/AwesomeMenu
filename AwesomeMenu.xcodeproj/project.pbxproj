@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3643089316397E5500155F82 /* bg_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 3643089116397E5400155F82 /* bg_action.png */; };
+		3643089416397E5500155F82 /* bg_action@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3643089216397E5400155F82 /* bg_action@2x.png */; };
+		364308971639805900155F82 /* bg_action-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 364308951639805800155F82 /* bg_action-highlighted.png */; };
+		364308981639805900155F82 /* bg_action-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 364308961639805900155F82 /* bg_action-highlighted@2x.png */; };
+		3643089D1639820700155F82 /* bg-actionitem-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 364308991639820600155F82 /* bg-actionitem-highlighted.png */; };
+		3643089E1639820700155F82 /* bg-actionitem-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3643089A1639820600155F82 /* bg-actionitem-highlighted@2x.png */; };
+		3643089F1639820700155F82 /* bg-actionitem.png in Resources */ = {isa = PBXBuildFile; fileRef = 3643089B1639820600155F82 /* bg-actionitem.png */; };
+		364308A01639820700155F82 /* bg-actionitem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3643089C1639820700155F82 /* bg-actionitem@2x.png */; };
 		5C03649D1488A5D4000CE00F /* bg-addbutton-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C03648A1488A5D4000CE00F /* bg-addbutton-highlighted.png */; };
 		5C03649E1488A5D4000CE00F /* bg-addbutton-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C03648B1488A5D4000CE00F /* bg-addbutton-highlighted@2x.png */; };
 		5C03649F1488A5D4000CE00F /* bg-addbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C03648C1488A5D4000CE00F /* bg-addbutton.png */; };
@@ -33,6 +41,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3643089116397E5400155F82 /* bg_action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_action.png; sourceTree = "<group>"; };
+		3643089216397E5400155F82 /* bg_action@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_action@2x.png"; sourceTree = "<group>"; };
+		364308951639805800155F82 /* bg_action-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_action-highlighted.png"; sourceTree = "<group>"; };
+		364308961639805900155F82 /* bg_action-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_action-highlighted@2x.png"; sourceTree = "<group>"; };
+		364308991639820600155F82 /* bg-actionitem-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-actionitem-highlighted.png"; sourceTree = "<group>"; };
+		3643089A1639820600155F82 /* bg-actionitem-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-actionitem-highlighted@2x.png"; sourceTree = "<group>"; };
+		3643089B1639820600155F82 /* bg-actionitem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-actionitem.png"; sourceTree = "<group>"; };
+		3643089C1639820700155F82 /* bg-actionitem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-actionitem@2x.png"; sourceTree = "<group>"; };
 		5C03648A1488A5D4000CE00F /* bg-addbutton-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-addbutton-highlighted.png"; sourceTree = "<group>"; };
 		5C03648B1488A5D4000CE00F /* bg-addbutton-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-addbutton-highlighted@2x.png"; sourceTree = "<group>"; };
 		5C03648C1488A5D4000CE00F /* bg-addbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-addbutton.png"; sourceTree = "<group>"; };
@@ -82,6 +98,14 @@
 		5C0364891488A5D4000CE00F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				364308991639820600155F82 /* bg-actionitem-highlighted.png */,
+				3643089A1639820600155F82 /* bg-actionitem-highlighted@2x.png */,
+				3643089B1639820600155F82 /* bg-actionitem.png */,
+				3643089C1639820700155F82 /* bg-actionitem@2x.png */,
+				3643089116397E5400155F82 /* bg_action.png */,
+				3643089216397E5400155F82 /* bg_action@2x.png */,
+				364308951639805800155F82 /* bg_action-highlighted.png */,
+				364308961639805900155F82 /* bg_action-highlighted@2x.png */,
 				5C03648A1488A5D4000CE00F /* bg-addbutton-highlighted.png */,
 				5C03648B1488A5D4000CE00F /* bg-addbutton-highlighted@2x.png */,
 				5C03648C1488A5D4000CE00F /* bg-addbutton.png */,
@@ -227,6 +251,14 @@
 				5C0364A81488A5D4000CE00F /* icon-plus@2x.png in Resources */,
 				5C0364A91488A5D4000CE00F /* icon-star.png in Resources */,
 				5C0364AA1488A5D4000CE00F /* icon-star@2x.png in Resources */,
+				3643089316397E5500155F82 /* bg_action.png in Resources */,
+				3643089416397E5500155F82 /* bg_action@2x.png in Resources */,
+				364308971639805900155F82 /* bg_action-highlighted.png in Resources */,
+				364308981639805900155F82 /* bg_action-highlighted@2x.png in Resources */,
+				3643089D1639820700155F82 /* bg-actionitem-highlighted.png in Resources */,
+				3643089E1639820700155F82 /* bg-actionitem-highlighted@2x.png in Resources */,
+				3643089F1639820700155F82 /* bg-actionitem.png in Resources */,
+				364308A01639820700155F82 /* bg-actionitem@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,8 +339,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AwesomeMenu/AwesomeMenu-Prefix.pch";
 				INFOPLIST_FILE = "AwesomeMenu/AwesomeMenu-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -319,8 +352,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AwesomeMenu/AwesomeMenu-Prefix.pch";
 				INFOPLIST_FILE = "AwesomeMenu/AwesomeMenu-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

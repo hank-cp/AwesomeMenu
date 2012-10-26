@@ -9,14 +9,14 @@
 #import "AwesomeMenu.h"
 #import <QuartzCore/QuartzCore.h>
 
-static CGFloat const kAwesomeMenuDefaultNearRadius = 110.0f;
-static CGFloat const kAwesomeMenuDefaultEndRadius = 120.0f;
-static CGFloat const kAwesomeMenuDefaultFarRadius = 140.0f;
-static CGFloat const kAwesomeMenuDefaultStartPointX = 160.0;
-static CGFloat const kAwesomeMenuDefaultStartPointY = 240.0;
+static CGFloat const kAwesomeMenuDefaultNearRadius = 230.0f;
+static CGFloat const kAwesomeMenuDefaultEndRadius = 240.0f;
+static CGFloat const kAwesomeMenuDefaultFarRadius = 260.0f;
+static CGFloat const kAwesomeMenuDefaultStartPointX = 320.0;
+static CGFloat const kAwesomeMenuDefaultStartPointY = 480.0;
 static CGFloat const kAwesomeMenuDefaultTimeOffset = 0.036f;
 static CGFloat const kAwesomeMenuDefaultRotateAngle = 0.0;
-static CGFloat const kAwesomeMenuDefaultMenuWholeAngle = M_PI * 2;
+static CGFloat const kAwesomeMenuDefaultMenuWholeAngle = M_PI_2;
 static CGFloat const kAwesomeMenuDefaultExpandRotation = M_PI;
 static CGFloat const kAwesomeMenuDefaultCloseRotation = M_PI * 2;
 
@@ -64,8 +64,8 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         self.menusArray = aMenusArray;
         
         // add the "Add" Button.
-        _addButton = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
-                                       highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"] 
+        _addButton = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_action.png"]
+                                       highlightedImage:[UIImage imageNamed:@"bg_action-highlighted.png"] 
                                            ContentImage:[UIImage imageNamed:@"icon-plus.png"] 
                                 highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
         _addButton.delegate = self;
@@ -227,11 +227,11 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         AwesomeMenuItem *item = [_menusArray objectAtIndex:i];
         item.tag = 1000 + i;
         item.startPoint = startPoint;
-        CGPoint endPoint = CGPointMake(startPoint.x + endRadius * sinf(i * menuWholeAngle / count), startPoint.y - endRadius * cosf(i * menuWholeAngle / count));
+        CGPoint endPoint = CGPointMake(startPoint.x + endRadius * sinf((i+0.5f) * menuWholeAngle / count * -1), startPoint.y - endRadius * cosf((i+0.5f) * menuWholeAngle / count));
         item.endPoint = RotateCGPointAroundCenter(endPoint, startPoint, rotateAngle);
-        CGPoint nearPoint = CGPointMake(startPoint.x + nearRadius * sinf(i * menuWholeAngle / count), startPoint.y - nearRadius * cosf(i * menuWholeAngle / count));
+        CGPoint nearPoint = CGPointMake(startPoint.x + nearRadius * sinf((i+0.5f) * menuWholeAngle / count * -1), startPoint.y - nearRadius * cosf((i+0.5f) * menuWholeAngle / count));
         item.nearPoint = RotateCGPointAroundCenter(nearPoint, startPoint, rotateAngle);
-        CGPoint farPoint = CGPointMake(startPoint.x + farRadius * sinf(i * menuWholeAngle / count), startPoint.y - farRadius * cosf(i * menuWholeAngle / count));
+        CGPoint farPoint = CGPointMake(startPoint.x + farRadius * sinf((i+0.5f) * menuWholeAngle / count * -1), startPoint.y - farRadius * cosf((i+0.5f) * menuWholeAngle / count));
         item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle);  
         item.center = item.startPoint;
         item.delegate = self;
@@ -252,10 +252,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     _expanding = expanding;    
     
     // rotate add button
-    float angle = self.isExpanding ? -M_PI_4 : 0.0f;
-    [UIView animateWithDuration:0.2f animations:^{
-        _addButton.transform = CGAffineTransformMakeRotation(angle);
-    }];
+//    float angle = self.isExpanding ? -M_PI_4 : 0.0f;
+//    [UIView animateWithDuration:0.2f animations:^{
+//        _addButton.transform = CGAffineTransformMakeRotation(angle);
+//    }];
     
     // expand or close animation
     if (!_timer) 
@@ -269,6 +269,16 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         _isAnimating = YES;
     }
 }
+
+#pragma mark - CAAnimationDelegate
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if (!flag) return;
+    for (AwesomeMenuItem* item in _menusArray) {
+        item.hidden = YES;
+    }
+}
+
 #pragma mark - private methods
 - (void)_expand
 {
@@ -284,6 +294,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     
     int tag = 1000 + _flag;
     AwesomeMenuItem *item = (AwesomeMenuItem *)[self viewWithTag:tag];
+    item.hidden = NO;
     
     CAKeyframeAnimation *rotateAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotateAnimation.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:expandRotation],[NSNumber numberWithFloat:0.0f], nil];
@@ -309,7 +320,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [item.layer addAnimation:animationgroup forKey:@"Expand"];
     item.center = item.endPoint;
-    
     _flag ++;
     
 }
@@ -322,11 +332,12 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         [_timer invalidate];
         [_timer release];
         _timer = nil;
+        
         return;
     }
     
     int tag = 1000 + _flag;
-     AwesomeMenuItem *item = (AwesomeMenuItem *)[self viewWithTag:tag];
+    AwesomeMenuItem *item = (AwesomeMenuItem *)[self viewWithTag:tag];
     
     CAKeyframeAnimation *rotateAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotateAnimation.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:closeRotation],[NSNumber numberWithFloat:0.0f], nil];
@@ -350,6 +361,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     animationgroup.duration = 0.5f;
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    animationgroup.delegate = self;
     [item.layer addAnimation:animationgroup forKey:@"Close"];
     item.center = item.startPoint;
     _flag --;
