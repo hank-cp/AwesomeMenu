@@ -12,15 +12,10 @@
 
 @synthesize window = _window;
 
-- (void)dealloc
-{
-    [_window release];
-    [super dealloc];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
     UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-actionitem.png"];
@@ -42,9 +37,6 @@
                                                         highlightedContentImage:nil];
     
     NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, nil];
-    [starMenuItem1 release];
-    [starMenuItem2 release];
-    [starMenuItem3 release];
 
     AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds menus:menus];
     
@@ -62,7 +54,6 @@
 	
     menu.delegate = self;
     [self.window addSubview:menu];
-    [menu release];
     
     [self.window makeKeyAndVisible];
     return YES;
