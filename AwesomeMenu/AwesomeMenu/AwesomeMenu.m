@@ -66,7 +66,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         // add the "Add" Button.
         _addButton = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_action.png"]
                                        highlightedImage:[UIImage imageNamed:@"bg_action-highlighted.png"] 
-                                           ContentImage:[UIImage imageNamed:@"icon-plus.png"] 
+                                           ContentImage:[UIImage imageNamed:@"icon-plus.png"]
                                 highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
         _addButton.delegate = self;
         _addButton.center = self.startPoint;
@@ -383,6 +383,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, scaleAnimation, opacityAnimation, nil];
     animationgroup.duration = 0.3f;
     animationgroup.fillMode = kCAFillModeForwards;
+    animationgroup.delegate = self;
 
     return animationgroup;
 }
