@@ -10,6 +10,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AwesomeMenuItem.h"
 
+enum AWECOME_MENU_ITEM_DIRECTION {
+    AWECOME_MENU_ITEM_DIRECTION_CLICKWISE = 1,
+    AWECOME_MENU_ITEM_DIRECTION_ANTI_CLICKWISE = -1,
+};
+
 @protocol AwesomeMenuDelegate;
 
 
@@ -41,6 +46,8 @@
 @property (nonatomic, assign) CGFloat menuWholeAngle;
 @property (nonatomic, assign) CGFloat expandRotation;
 @property (nonatomic, assign) CGFloat closeRotation;
+@property (nonatomic, assign) CGFloat offset;
+@property (nonatomic, assign) enum AWECOME_MENU_ITEM_DIRECTION direction;
 
 - (id)initWithFrame:(CGRect)frame menus:(NSArray *)aMenusArray;
 @end

@@ -19,7 +19,8 @@ static CGFloat const kAwesomeMenuDefaultRotateAngle = 0.0;
 static CGFloat const kAwesomeMenuDefaultMenuWholeAngle = M_PI_2;
 static CGFloat const kAwesomeMenuDefaultExpandRotation = M_PI;
 static CGFloat const kAwesomeMenuDefaultCloseRotation = M_PI * 2;
-
+static CGFloat const kAwesomeMenuDefaultOffset = 0.0;
+static CGFloat const kAwesomeMenuDefaultDirection = AWECOME_MENU_ITEM_DIRECTION_CLICKWISE;
 
 static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float angle)
 {
@@ -39,7 +40,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 @implementation AwesomeMenu
 
-@synthesize nearRadius, endRadius, farRadius, timeOffset, rotateAngle, menuWholeAngle, startPoint, expandRotation, closeRotation;
+@synthesize nearRadius, endRadius, farRadius, timeOffset, rotateAngle, menuWholeAngle, startPoint, expandRotation, closeRotation, offset, direction;
 @synthesize expanding = _expanding;
 @synthesize delegate = _delegate;
 @synthesize menusArray = _menusArray;
@@ -60,6 +61,8 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 		self.startPoint = CGPointMake(kAwesomeMenuDefaultStartPointX, kAwesomeMenuDefaultStartPointY);
         self.expandRotation = kAwesomeMenuDefaultExpandRotation;
         self.closeRotation = kAwesomeMenuDefaultCloseRotation;
+        self.offset = kAwesomeMenuDefaultOffset;
+        self.direction = kAwesomeMenuDefaultDirection;
         
         self.menusArray = aMenusArray;
         
@@ -227,11 +230,11 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         AwesomeMenuItem *item = [_menusArray objectAtIndex:i];
         item.tag = 1000 + i;
         item.startPoint = startPoint;
-        CGPoint endPoint = CGPointMake(startPoint.x + endRadius * sinf((i+0.5f) * menuWholeAngle / count * -1), startPoint.y - endRadius * cosf((i+0.5f) * menuWholeAngle / count));
+        CGPoint endPoint = CGPointMake(startPoint.x + endRadius * sinf((i+offset) * menuWholeAngle / count * direction), startPoint.y - endRadius * cosf((i+offset) * menuWholeAngle / count));
         item.endPoint = RotateCGPointAroundCenter(endPoint, startPoint, rotateAngle);
-        CGPoint nearPoint = CGPointMake(startPoint.x + nearRadius * sinf((i+0.5f) * menuWholeAngle / count * -1), startPoint.y - nearRadius * cosf((i+0.5f) * menuWholeAngle / count));
+        CGPoint nearPoint = CGPointMake(startPoint.x + nearRadius * sinf((i+offset) * menuWholeAngle / count * direction), startPoint.y - nearRadius * cosf((i+offset) * menuWholeAngle / count));
         item.nearPoint = RotateCGPointAroundCenter(nearPoint, startPoint, rotateAngle);
-        CGPoint farPoint = CGPointMake(startPoint.x + farRadius * sinf((i+0.5f) * menuWholeAngle / count * -1), startPoint.y - farRadius * cosf((i+0.5f) * menuWholeAngle / count));
+        CGPoint farPoint = CGPointMake(startPoint.x + farRadius * sinf((i+offset) * menuWholeAngle / count * direction), startPoint.y - farRadius * cosf((i+offset) * menuWholeAngle / count));
         item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle);  
         item.center = item.startPoint;
         item.delegate = self;
