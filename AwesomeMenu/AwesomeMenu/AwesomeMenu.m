@@ -19,8 +19,8 @@ static CGFloat const kAwesomeMenuDefaultRotateAngle = 0.0;
 static CGFloat const kAwesomeMenuDefaultMenuWholeAngle = M_PI_2;
 static CGFloat const kAwesomeMenuDefaultExpandRotation = M_PI;
 static CGFloat const kAwesomeMenuDefaultCloseRotation = M_PI * 2;
-static CGFloat const kAwesomeMenuDefaultOffset = 0.0;
-static CGFloat const kAwesomeMenuDefaultDirection = AWECOME_MENU_ITEM_DIRECTION_CLICKWISE;
+static CGFloat const kAwesomeMenuDefaultOffset = 0.5f;
+static CGFloat const kAwesomeMenuDefaultDirection = AWECOME_MENU_ITEM_DIRECTION_ANTI_CLICKWISE;
 
 static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float angle)
 {
